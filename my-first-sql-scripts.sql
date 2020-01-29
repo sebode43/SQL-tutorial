@@ -11,3 +11,9 @@ Select student.ID, concat (Firstname, ' ', LastName) as 'Name', SAT, GPA,
 	from Student
 	left join Major
 		on Major.id = student.majorid;
+
+Select *
+from Class
+	join Instructor
+		on Instructor.id = class.instructorid
+		order by Lastname asc;
