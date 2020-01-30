@@ -1,3 +1,6 @@
+/* To comment
+	on multi-lines */
+
 Select sum(sales) as 'Total Sales for Cincy & Cle',
 	max(sales) as 'Highest Sales',
 	min(sales) as 'Lowest Sales',
@@ -12,3 +15,4 @@ Select sum(sales) as 'Total Sales', City
 		--where sales > 50000
 		group by city
 			having sum(sales) > 600000;
+
