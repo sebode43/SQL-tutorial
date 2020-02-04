@@ -99,3 +99,20 @@ Insert into RequestLines(RequestId, ProductID, Quantity)
 Insert into RequestLines(RequestId, ProductID, Quantity)
 	values (3, (select id from Products where Name = 'Nikon Camera'), '1');
 go
+Create procedure UpdateRequestTotal
+	@Requestid int --put parameters in after procedure before as
+as
+Begin
+	Set nocount on;
+	Update Requests set Total = (Select sum(rl.quantity * p.price) as 'Request Total' from Requests r
+		join Requestlines rl
+			on rl.requestid = r.id
+		join Products p
+			on rl.ProductID = p.id
+			where r.id = @requestid)
+		where id = @requestid;
+END
+go
+Select * from requests
+	where id = 1 or id = 2 or id = 3
+	order by Description
